@@ -1,4 +1,4 @@
-project_name = "dev-ecs"
+project_name = "linuxtips-ecs"
 region       = "us-east-1"
 
 
@@ -25,12 +25,12 @@ load_balancer_type     = "application"
 
 node_ami                       = "ami-0a5f593ecaa0f722d"
 node_instance_type             = "t2.micro"
-node_volume_size               = "8"
+node_volume_size               = "30"
 node_volume_type               = "gp3"
 cluster_on_demand_min_size     = 1
-cluster_on_demand_max_size     = 2
+cluster_on_demand_max_size     = 1
 cluster_on_demand_desired_size = 1
 cluster_spot_min_size          = 1
-cluster_spot_max_size          = 3
-cluster_spot_desired_size      = 2
+cluster_spot_max_size          = 1
+cluster_spot_desired_size      = 1
 spot_price                     = "0.016"

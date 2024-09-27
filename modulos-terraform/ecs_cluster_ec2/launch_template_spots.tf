@@ -11,14 +11,14 @@ resource "aws_launch_template" "spots" {
   instance_market_options {
     market_type = "spot"
     spot_options {
-      block_duration_minutes         = 60
+      #block_duration_minutes         = 60
       instance_interruption_behavior = "terminate"
       max_price                      = var.spot_price
     }
   }
 
   iam_instance_profile {
-    name = "ecsInstanceRole"
+    name = aws_iam_instance_profile.main.name
   }
 
   block_device_mappings {

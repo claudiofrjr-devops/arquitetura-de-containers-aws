@@ -1,5 +1,5 @@
 resource "aws_autoscaling_group" "spots" {
-  name_prefix = format("%s-spot", var.project_name)
+  name_prefix = format("%s-spots", var.project_name)
   vpc_zone_identifier = [
     data.aws_ssm_parameter.subnet_private_1a.value,
     data.aws_ssm_parameter.subnet_private_1b.value,
@@ -16,7 +16,7 @@ resource "aws_autoscaling_group" "spots" {
 
   tag {
     key                 = "Name"
-    value               = format("%s-spot", var.project_name)
+    value               = format("%s-spots", var.project_name)
     propagate_at_launch = true
   }
 
@@ -28,14 +28,14 @@ resource "aws_autoscaling_group" "spots" {
 }
 
 resource "aws_ecs_capacity_provider" "spots" {
-  name = format("%s-spot", var.project_name)
+  name = format("%s-spots", var.project_name)
 
   auto_scaling_group_provider {
     auto_scaling_group_arn = aws_autoscaling_group.spots.arn
     managed_scaling {
       status                    = "ENABLED"
       target_capacity           = 90
-      maximum_scaling_step_size = 2
+      maximum_scaling_step_size = 1
       minimum_scaling_step_size = 1
     }
   }
