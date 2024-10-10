@@ -56,5 +56,7 @@ module "ecs_service-app-01" {
   alb_arn = data.aws_ssm_parameter.alb.value
 
 
+  ## Aula 06 passando imagem do container
+  container_image = var.container_image
 
 }
