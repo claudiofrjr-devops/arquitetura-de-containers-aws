@@ -10,6 +10,12 @@ variable "service_cpu" {}
 
 variable "service_memory" {}
 
+variable "container_image" {
+  type        = string
+  description = "The image of the container for deployment"
+
+}
+
 variable "lb_ssm_listener" {}
 
 variable "ssm_vpc_id" {}
